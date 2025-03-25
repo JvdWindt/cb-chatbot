@@ -7,18 +7,16 @@ from IPython.display import Image, display
 
 from langgraph.graph import StateGraph
 from langgraph.graph.message import add_messages
-from rag import retrieve, generate
+#from rag import retrieve, generate
 
 load_dotenv()
 
 class State(TypedDict):
     messages: Annotated[list, add_messages]
 
-
 graph_builder = StateGraph(State)
 
 llm = ChatOpenAI(model="gpt-4o")
-
 
 def chatbot(state: State):
     return {"messages": [llm.invoke(state["messages"])]}
