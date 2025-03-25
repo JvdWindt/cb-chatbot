@@ -24,6 +24,7 @@ prompt = hub.pull("rlm/rag-prompt")
 # Define state for application
 class State(TypedDict):
     messages: Annotated[list, add_messages]
+    context: list
 
 
 # Define application steps

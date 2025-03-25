@@ -13,7 +13,11 @@ def chat_with_openai(prompt, api_key):
     client = openai.OpenAI(api_key=api_key)
     response = client.chat.completions.create(
         model="gpt-4o",
-        messages=[{"role": "user", "content": prompt}]
+        messages=[
+            {"role": "system", 
+             "content": "Je bent een assistent op de klantenservice van Coolblue. Je bent gespecialiseerd in vragen over support."},
+            {"role": "user", 
+             "content": prompt}]
     )
     return response.choices[0].message.content
 
