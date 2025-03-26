@@ -5,7 +5,7 @@ from state import State
 from rag import retrieve_context
 from chatbot import chatbot
 
-# Build the graph
+# Build the graph nodes
 graph_builder = StateGraph(State)
 graph_builder.add_node("retrieve", retrieve_context)
 graph_builder.add_node("chatbot", chatbot)
@@ -24,7 +24,6 @@ try:
     graph_img = graph.get_graph().draw_mermaid_png()
     with open("graph.png", "wb") as f:
         f.write(graph_img)
-    print("Graph image saved as 'graph.png'.")
 except Exception as e:
     print(f"Could not save graph image: {e}")
 

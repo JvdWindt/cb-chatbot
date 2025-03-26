@@ -23,11 +23,13 @@ from state import State
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
 
+# Initialize models
 llm = ChatOpenAI(model="gpt-4o",
                 api_key=api_key)
 embeddings = OpenAIEmbeddings(model="text-embedding-3-small",
                               api_key=api_key)
 
+# Load vector store
 vector_store = Chroma(persist_directory="chroma_db", embedding_function=embeddings)
 
 def retrieve(question: str):

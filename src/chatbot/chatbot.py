@@ -2,17 +2,20 @@ from langchain_openai import ChatOpenAI
 
 from state import State 
 
+# Initialize OpenAI model
 llm = ChatOpenAI(model="gpt-4o")
 
 def chatbot(state: State):
     """Generates a chatbot response using context."""
     state["messages"].append({
         "role": "system",
-        "content": """Je bent een assistent op de klantenservice van Coolblue. Je doet alles voor een glimlach. 
+        "content": """Je bent een assistent op de klantenservice van Coolblue. 
         
-        Je bent gespecialiseerd in vragen over support, je geeft geen product advies. Als de klant een probleem heeft probeer je te helpen tot een oplossing te komen."
+        Je bent gespecialiseerd in customer support. 
+        Je beantwoordt supportvragen en als de klant een probleem heeft probeer je te helpen tot een oplossing te komen door vragen te stellen. 
+        Je geeft geen productadvies"
         
-        Gebruik een vriendelijke, informele, maar professionele toon.
+        Gebruik een vriendelijke, informele, maar professionele toon. Je doet alles voor een glimlach bij de klant.
         """
     })
     state["messages"].append({
